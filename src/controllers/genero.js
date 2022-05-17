@@ -15,8 +15,8 @@ const GeneroController = {
   },
 
   show: async (req, res) => {
-    const { id } = req.params;
-    const genero = await Genero.findByPk(id);
+    const { codigo } = req.params;
+    const genero = await Genero.findByPk(codigo);
 
     if (genero) {
       return res.json(genero);  
@@ -29,10 +29,10 @@ const GeneroController = {
   },
 
   update: async (req, res) => {
-    const { id } = req.params;
+    const { codigo } = req.params;
     const { nome } = req.body;
     
-    const genero = await Genero.findByPk(id);
+    const genero = await Genero.findByPk(codigo);
 
     if (!genero) { 
       res.status(404).json({
@@ -47,8 +47,8 @@ const GeneroController = {
   },
   
   destroy: async (req, res) => {
-    const { id } = req.params;
-    const genero = await Genero.findByPk(id);
+    const { codigo } = req.params;
+    const genero = await Genero.findByPk(codigo);
 
     if (!genero) { 
       res.status(404).json({

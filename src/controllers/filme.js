@@ -9,16 +9,16 @@ const FilmeController = {
 
   store: async (req, res) => {
     
-    const { nome, ano_lancamento, estoque, duracao } = req.body;
-    const novoFilme = await Filme.create({ nome, ano_lancamento, estoque, duracao });
+    const { nome, ano_lancamento, duracao, estoque } = req.body;
+    const novoFilme = await Filme.create({ nome, ano_lancamento, duracao, estoque });
 
     res.json(novoFilme);
  
   },
 
   show: async (req, res) => {
-    const { id } = req.params;
-    const filme = await Filme.findByPk(id);
+    const { codigo } = req.params;
+    const filme = await Filme.findByPk(codigo);
 
     if (filme) {
       return res.json(filme);
@@ -29,10 +29,10 @@ const FilmeController = {
   },
 
   update: async (req, res) => {
-    const { id } = req.params;
-    const { nome, ano_lancamento, estoque, duracao } = req.params;
+    const { codigo } = req.params;
+    const { nome, ano_lancamento, duracao, estoque } = req.params;
 
-    const filme = await Filme.findByPk(id);
+    const filme = await Filme.findByPk(codigo);
 
     if (!filme) { 
       res.status(404).json({
@@ -41,17 +41,17 @@ const FilmeController = {
     }
 
     await Filme.update(
-      {nome, ano_lancamento, estoque, duracao},
-      {where: {codigo: id}},
+      {nome, ano_lancamento, duracao, estoque},
+      {where: {codigo: codigo}},
     );
     
-    const filmeAtualizado = await Filme.findByPk(id);
+    const filmeAtualizado = await Filme.findByPk(codigo);
     res.json(filmeAtualizado);
   },
 
   destroy: async (req, res) => {
-    const { id } = req.params;
-    const filme = await Filme.findByPk(id);
+    const { codigo } = req.params;
+    const filme = await Filme.findByPk(codigo);
 
     if (!filme) { 
       res.status(404).json({

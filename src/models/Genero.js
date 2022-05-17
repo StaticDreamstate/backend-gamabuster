@@ -1,11 +1,10 @@
-//Tabela "Produtos" do Bando de Dados
 
 const db = require("../database");
 const { DataTypes } = require("sequelize");
 
 const Genero = db.define("Genero", {
 
-    id: {
+    codigo: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -25,4 +24,4 @@ const Genero = db.define("Genero", {
 
 });
 
-module.exports = "Genero";
+module.exports = Genero;

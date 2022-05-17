@@ -1,27 +1,21 @@
-
-const db = require("../database");
 const { DataTypes } = require("sequelize");
 
-const Genero = db.define("Genero", {
+const db = require("../database");
 
+const Genero = db.define(
+  "Genero",
+  {
     codigo: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
-
     nome: {
-        type: DataTypes.STRING,
-      
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-
-    createdAt: { type: DataTypes.DATE },
-
-    updatedAt: { type: DataTypes.DATE },
-
-    tableName: "genero",
-
-});
+  },
+  { tableName: "genero", timestamps: false }
+);
 
 module.exports = Genero;

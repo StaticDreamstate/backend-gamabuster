@@ -4,7 +4,7 @@ const db = require("../database");
 
 const Filme = db.define("Filme", {
 
-    id: {
+    codigo: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -41,4 +41,4 @@ const Filme = db.define("Filme", {
 
 });
 
-module.exports = "Filme";
+module.exports = Filme;

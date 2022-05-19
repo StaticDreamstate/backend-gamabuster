@@ -27,7 +27,7 @@ const Filme = db.define(
       defaultValue: 0,
     },
   },
-  { tableName: "filme", timestamps: false }
+  { tableName: "filme", timestamps: false, underscored: true }
 );
 
 module.exports = Filme;

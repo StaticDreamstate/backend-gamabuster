@@ -15,7 +15,7 @@ const Genero = db.define(
       allowNull: false,
     },
   },
-  { tableName: "genero", timestamps: false }
+  { tableName: "genero", timestamps: false, underscored: true }
 );
 
 module.exports = Genero;
